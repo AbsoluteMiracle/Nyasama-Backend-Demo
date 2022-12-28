@@ -6,4 +6,4 @@
  second: python main.py
 
 # Api docs
- paste http://localhost:8080/docs#/ to your browser when Server is running
+ open http://localhost:8080/docs#/ to your browser when Server is running
