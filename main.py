@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from typing import Union
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.middleware.cors import CORSMiddleware
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from pydantic import BaseModel
@@ -49,6 +50,24 @@ pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl='token')
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+
+    # 允许跨域的源列表，例如 ['http://www.example.org'] 等等，['*'] 表示允许任何源
+    allow_origins=[
+        '*'
+    ],
+
+    # 跨域请求是否支持 cookie，默认是 False，如果为 True，allow_origins 必须为具体的源，不可以是 ['*']
+    allow_credentials=False,
+
+    # 允许跨域请求的 HTTP 方法列表，默认是 ['GET']
+    allow_methods=['GET'],
+
+    # 允许跨域请求的 HTTP 请求头列表，默认是 []，可以使用 ['*'] 表示允许所有的请求头
+    # 当然 Accept、Accept-Language、Content-Language 以及 Content-Type 总是被允许的
+    allow_headers=['*'],
+)
 
 
 def verify_password(plain_password, hashed_password):
