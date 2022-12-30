@@ -1,5 +1,7 @@
 # Nyasama-Backend-Demo
- This is a backend demo for Nyasama
+ This is a backend demo for Nyasama  
+ Using FastApi to build  
+ Python interpreter version: 3.11.1
 
 # To run the server
  First: pip install -r requirements.txt  
