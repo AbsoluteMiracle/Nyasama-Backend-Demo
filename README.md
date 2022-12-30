@@ -8,4 +8,4 @@
  username: nyasama  password: admin123
 
 # Api docs
- Open http://localhost:8080/docs#/ to your browser when Server is running
+ Open http://localhost:8080/docs#/ when Server is running
